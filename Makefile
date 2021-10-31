@@ -7,7 +7,7 @@ MENU := all clean test
 MENU += help readme
 
 # main
-MENU += dev test build
+MENU += serve
 
 # load phony
 .PHONY: $(MENU)
@@ -56,17 +56,6 @@ readme:													## show information and notes
 
 # core commands
 
-dev:														## run project in dev mode
-	# === develop local
-	yarn src:dev
-
-test: 													## test project
-	# === test
-
-build: 													## build project
-	# === deploy
-	yarn src:build
-
 serve: 													## serve project
 	# === serve
-	yarn src:serve
+	python3 -m http.server 9000
