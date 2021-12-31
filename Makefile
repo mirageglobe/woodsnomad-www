@@ -23,9 +23,9 @@ SHELL := /bin/bash
 # === check make version
 
 # enforce make 4+
-ifeq ($(origin .RECIPEPREFIX), undefined)
-  $(error This Make does not support .RECIPEPREFIX. Please use GNU Make 4.0 or later. Use `brew install make` and run `gmake`)
-endif
+# ifeq ($(origin .RECIPEPREFIX), undefined)
+#   $(error This Make does not support .RECIPEPREFIX. Please use GNU Make 4.0 or later. Use `brew install make` and run `gmake`)
+# endif
 
 # sets all lines in the recipe to be passed in a single shell invocation
 .ONESHELL:
