@@ -1,6 +1,6 @@
-# gmagarwood
+# woodsnomad.www
 
-- source url: https://mirageglobe.github.io/gmagarwood/
-- sub domain: https://gmagarwood.piperpiperpiper.com
+- source url: <https://mirageglobe.github.io/woodsnomad-www/>
+- sub domain: <https://www.woodsnomad.com>
 
-this is the project dist of gmagarwood static site.
+this is the project dist of woodsnomad-www static site.
