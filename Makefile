@@ -7,7 +7,7 @@ MENU := all clean test
 MENU += help readme
 
 # main
-MENU += serve
+MENU += serve clean
 
 # load phony
 .PHONY: $(MENU)
@@ -59,3 +59,16 @@ readme:													## show information and notes
 serve: 													## serve project
 	# === serve
 	python3 -m http.server 9000
+
+clean: 													## cleanup generated files but keep cname and assets
+	# === clean
+	# keep files: Makefile, README.md, CNAME, .nojekyll, .git, wn*.png, *.svg, dot.env
+	# removes: everything else at the root, and flushes articles and assets (excluding images)
+	# root files
+	rm -rf 404.html hashmap.json sitemap.xml index.html
+	# directories (vitepress articles were flat html, astro are folders)
+	rm -rf articles/
+	# wipe assets but keep images/svgs if any were accidentally there (mostly handled by root glob)
+	# specifically removing vitepress asset patterns
+	find assets -type f ! -name "wn*.png" ! -name "*.svg" -delete
+	rm -rf assets/chunks/
