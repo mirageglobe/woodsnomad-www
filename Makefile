@@ -60,15 +60,15 @@ serve: 													## serve project
 	# === serve
 	python3 -m http.server 9000
 
-clean: 													## cleanup generated files but keep cname and assets
+clean: 													## cleanup EVERYTHING except cname, makefile, and git
 	# === clean
-	# keep files: Makefile, README.md, CNAME, .nojekyll, .git, wn*.png, *.svg, dot.env
-	# removes: everything else at the root, and flushes articles and assets (excluding images)
+	# keep files: Makefile, README.md, CNAME, .nojekyll, .git, dot.env
+	# removes: everything else (index.html, articles/, assets/, images/, svgs/, etc.)
 	# root files
 	rm -rf 404.html hashmap.json sitemap.xml index.html
-	# directories (vitepress articles were flat html, astro are folders)
+	# remove images and svgs from root (user requested cleanup to move assets to right folder)
+	rm -f wn*.png woodsnomad-logo.svg world-tree-life.svg
+	# directories
 	rm -rf articles/
-	# wipe assets but keep images/svgs if any were accidentally there (mostly handled by root glob)
-	# specifically removing vitepress asset patterns
-	find assets -type f ! -name "wn*.png" ! -name "*.svg" -delete
-	rm -rf assets/chunks/
+	# wipe assets completely
+	rm -rf assets/
